@@ -1,0 +1,21 @@
+{
+  "name": "chat-application",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "electron app/",
+    "server": "node server/"
+  },
+  "author": "excham",
+  "license": "ISC",
+  "dependencies": {
+    "bulma": "^0.6.1",
+    "electron": "^1.7.10",
+    "font-awesome": "^4.7.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-router-dom": "^4.2.2"
+  }
+}

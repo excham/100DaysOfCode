@@ -1,0 +1,97 @@
+* {
+  margin: 0px;
+  padding: 0px;
+
+  box-sizing: border-box;
+}
+
+html {
+  overflow-y: hidden;
+}
+
+.custom-navbar {
+  background-color: #404146;
+  height: 35px;
+  -webkit-app-region: drag;
+}
+
+.custom-navbar .brand {
+  line-height: 35px;
+  font-size: 14px;
+  color: #dbdbde;
+  padding: 0px 11px;
+}
+
+.custom-navbar a {
+  display: inline-block;
+  font-size: 15px;
+  font-weight: bold;
+  height: 25px;
+  padding: 0px 10px;
+  background-color: #ff7473;
+  margin: 5px;
+  border-radius: 12.5px;
+  color: #fff;
+  float: right;
+  -webkit-app-region: no-drag;
+}
+
+.sidebar {
+  display: inline-block;
+  height: 565px;
+  width: 80px;
+  background-color: #54546c;
+}
+
+.sidebar .icon {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  margin: 15px 15px 0px 15px;
+  border-radius: 50%;
+}
+
+.sidebar .icon:not(.settings) {
+  background-color: #a5d296;
+}
+
+.sidebar .icon.settings {
+  font-size: 50px;
+  padding: 4px;
+  color: #3e3e4f;
+  bottom: 0px;
+  margin-top: 0px;
+}
+
+.sidebar .icon:not(.settings):hover {
+  background-color: #77bb60;
+  transition: all 0.25s ease-in-out;
+}
+
+.app-main {
+  display: inline-block;
+  float: right;
+  width: 944px;
+  height: 565px;
+}
+
+.app-room {
+  padding: 10px;
+}
+
+.app-room .chat-avatar {
+  width: 18px;
+  height: 18px;
+  float: left;
+  margin-top: 3px;
+  margin-right: 5px;
+}
+
+.app-room .chat-container {
+  height: 435px;
+}
+
+.app-room .chat-username {
+  display: inline-block;
+  width: 60px;
+}
