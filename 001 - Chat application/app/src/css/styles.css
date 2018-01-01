@@ -9,6 +9,8 @@ html {
   overflow-y: hidden;
 }
 
+
+
 .custom-navbar {
   background-color: #404146;
   height: 35px;
@@ -35,6 +37,8 @@ html {
   float: right;
   -webkit-app-region: no-drag;
 }
+
+
 
 .sidebar {
   display: inline-block;
@@ -68,12 +72,16 @@ html {
   transition: all 0.25s ease-in-out;
 }
 
+
+
 .app-main {
   display: inline-block;
   float: right;
   width: 944px;
   height: 565px;
 }
+
+
 
 .app-room {
   padding: 10px;
@@ -94,4 +102,9 @@ html {
 .app-room .chat-username {
   display: inline-block;
   width: 60px;
+}
+
+
+.app-login {
+  padding-top: 130px;
 }

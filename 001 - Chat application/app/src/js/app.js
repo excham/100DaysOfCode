@@ -7,6 +7,7 @@ const history = require('history').createBrowserHistory
 const Header = require(projectDir + 'template/header');
 const Sidebar = require(projectDir + 'template/sidebar');
 
+const Login = require(projectDir + 'login');
 const Home = require(projectDir + 'home');
 const Room = require(projectDir + 'room');
 const AppManager = require(projectDir + 'appManager');
@@ -55,8 +56,29 @@ class App extends React.Component {
     }
   }
 
+  login() {
+    this.setState({loggedin: true})
+  }
+
   render() {
     return (
+      !this.state.loggedin ?
+      React.createElement(
+        ReactRouter.HashRouter,
+        {},
+        React.createElement(
+          'div',
+          {className: 'app-container'},
+          React.createElement(
+            Header,
+            {}
+          ),
+          React.createElement(
+            Login,
+            {login: this.login.bind(this)}
+          )
+        )
+      ) :
       React.createElement(
         ReactRouter.HashRouter,
         {},
@@ -79,7 +101,7 @@ class App extends React.Component {
               {},
               React.createElement(
                 ReactRouter.Route,
-                {path: '/', component: Home, exact: true}
+                {path: '/', exact: true, component: Home}
               ),
               this.state.rooms.map(function (e, i) {
                 return React.createElement(
