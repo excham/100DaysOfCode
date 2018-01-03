@@ -2,7 +2,7 @@ const React = require('react');
 const ReactDom = require('react-dom');
 const ReactRouter = require('react-router-dom');
 
-const history = require('history').createBrowserHistory
+const io = require('socket.io-client')
 
 const Header = require(projectDir + 'template/header');
 const Sidebar = require(projectDir + 'template/sidebar');
@@ -16,48 +16,28 @@ class App extends React.Component {
   constructor() {
     super()
 
+    this.socket = null;
+
     this.state = {
-      rooms: [
-        {
-          id: 'xe4gU37h',
-          name: 'Apples',
-          chatHistory: [
-            {
-              userid: '32dfUg5d',
-              username: 'Josh',
-              message: 'Hey you guys awake?',
-              timestamp: 1514775841
-            },
-            {
-              userid: 'lEy5c925',
-              username: 'Daniel',
-              message: 'Yeah what\'s up?',
-              timestamp: 1514775891
-            },
-            {
-              userid: '32dfUg5d',
-              username: 'Josh',
-              message: 'bored lol',
-              timestamp: 1514775902
-            }
-          ]
-        },
-        {
-          id: 'l58SegYu',
-          name: 'Oranges',
-          chatHistory: []
-        },
-        {
-          id: '3fUe8Nts',
-          name: 'Bananas',
-          chatHistory: []
-        }
-      ]
+      loggedin: false,
+      rooms: []
     }
   }
 
-  login() {
-    this.setState({loggedin: true})
+  login(host, username, password) {
+
+    this.socket = io(host);
+
+    this.socket.on('connect', function (data) {
+
+      this.socket.emit('login', {username: username, password: password})
+
+      this.socket.on('loginResult', function (data) {
+        this.setState({rooms: data.rooms, loggedin: true})
+
+        window.location.hash = "#/room/" + data.rooms[0].id
+      }.bind(this))
+    }.bind(this))
   }
 
   render() {

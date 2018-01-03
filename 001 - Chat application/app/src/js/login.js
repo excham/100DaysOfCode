@@ -3,7 +3,11 @@ const React = require('react');
 class Login extends React.Component {
 
   login() {
-    this.props.login();
+    this.props.login(
+      document.getElementById('login__host').value,
+      document.getElementById('login__username').value,
+      document.getElementById('login__password').value
+    );
   }
 
   render() {
@@ -28,7 +32,7 @@ class Login extends React.Component {
           ),
           React.createElement(
             'input',
-            {className: 'input'}
+            {className: 'input', id: 'login__host'}
           )
         ),
         React.createElement(
@@ -41,7 +45,7 @@ class Login extends React.Component {
           ),
           React.createElement(
             'input',
-            {className: 'input'}
+            {className: 'input', id: 'login__username'}
           )
         ),
         React.createElement(
@@ -54,7 +58,7 @@ class Login extends React.Component {
           ),
           React.createElement(
             'input',
-            {className: 'input', type: 'password'}
+            {className: 'input', type: 'password', id: 'login__password'}
           )
         ),
         React.createElement(
@@ -62,7 +66,7 @@ class Login extends React.Component {
           {className: 'field'},
           React.createElement(
             'button',
-            {className: 'button is-primary is-pulled-right', onClick: this.props.login},
+            {className: 'button is-primary is-pulled-right', onClick: this.login.bind(this)},
             'Login'
           )
         )

@@ -11,7 +11,12 @@ class Sidebar extends React.Component {
           return React.createElement(
             ReactRouter.Link,
             {className: 'icon', to: '/room/' + e.id, key: i},
-            ' '
+            ' ',
+            e.unreadMessageCount != 0 ? React.createElement(
+              'span',
+              {className: 'icon-notification-count'},
+              e.unreadMessageCount
+            ) : null
           );
         }),
         React.createElement(

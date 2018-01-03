@@ -3,10 +3,26 @@
   padding: 0px;
 
   box-sizing: border-box;
+
+  -webkit-user-select: none;
+
+  cursor: default;
 }
 
 html {
   overflow-y: hidden;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+a, a *, button {
+  cursor: pointer;
+}
+
+input, textarea {
+  cursor: text;
 }
 
 
@@ -61,15 +77,31 @@ html {
 
 .sidebar .icon.settings {
   font-size: 50px;
+  line-height: 50px;
   padding: 4px;
   color: #3e3e4f;
   bottom: 0px;
-  margin-top: 0px;
+  margin-top: 10px;
 }
 
 .sidebar .icon:not(.settings):hover {
   background-color: #77bb60;
   transition: all 0.25s ease-in-out;
+}
+
+.sidebar .icon .icon-notification-count {
+  display: block;
+  width: 15px;
+  height: 15px;
+  border-radius: 7px;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  margin-top: 35px;
+  margin-left: 35px;
+  background-color: #ff7473;
 }
 
 
@@ -96,12 +128,18 @@ html {
 }
 
 .app-room .chat-container {
-  height: 435px;
+  height: 420px;
 }
 
 .app-room .chat-username {
   display: inline-block;
   width: 60px;
+}
+
+.app-room .chat-typing {
+  display: block;
+  height: 20px;
+  font-size: 12px;
 }
 
 

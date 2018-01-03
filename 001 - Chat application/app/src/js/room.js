@@ -16,7 +16,7 @@ class Room extends React.Component {
         this.props.room.chatHistory.map(function (e, i) {
           return React.createElement(
             'div',
-            {className: 'chat-message'},
+            {className: 'chat-message', key: i},
             React.createElement(
               'img',
               {src: 'src/images/avatar_1.png', className: 'chat-avatar'}
@@ -32,8 +32,35 @@ class Room extends React.Component {
         })
       ),
       React.createElement(
-        'input',
-        {className: 'input chat-compose'}
+        'small',
+        {className: 'chat-typing'},
+        React.createElement(
+          'i',
+          {},
+          'Daniel'
+        ),
+        ' is typing...'
+      ),
+      React.createElement(
+        'div',
+        {className: 'columns'},
+        React.createElement(
+          'div',
+          {className: 'column is-10'},
+          React.createElement(
+            'input',
+            {className: 'input chat-compose'}
+          )
+        ),
+        React.createElement(
+          'div',
+          {className: 'column is-2'},
+          React.createElement(
+            'button',
+            {className: 'button is-primary is-fullwidth'},
+            'Send'
+          )
+        )
       )
     )
   }
