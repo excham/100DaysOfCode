@@ -1,6 +1,22 @@
 const React = require('react');
 
 class Room extends React.Component {
+
+  constructor() {
+    super()
+  }
+
+  checkChatSend(e) {
+    if(e.which == 13)
+      this.sendMessage()
+  }
+
+  sendMessage() {
+    this.props.sendMessage(
+      document.getElementById('chat__message_compose').value
+    )
+  }
+
   render() {
     return React.createElement(
       'div',
@@ -49,7 +65,7 @@ class Room extends React.Component {
           {className: 'column is-10'},
           React.createElement(
             'input',
-            {className: 'input chat-compose'}
+            {className: 'input chat-compose', id: 'chat__message_compose', onKeyPress: this.checkChatSend.bind(this)}
           )
         ),
         React.createElement(
@@ -57,7 +73,7 @@ class Room extends React.Component {
           {className: 'column is-2'},
           React.createElement(
             'button',
-            {className: 'button is-primary is-fullwidth'},
+            {className: 'button is-primary is-fullwidth', onClick: this.sendMessage.bind(this)},
             'Send'
           )
         )

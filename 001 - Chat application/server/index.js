@@ -4,9 +4,9 @@ var io = require('socket.io')(server);
 io.on('connection', function (socket) {
   console.log('User connected: ' + socket.id);
 
-  socket.on('login', function (data) {
+  socket.on('login', function (data, callback) {
     console.log(data);
-    socket.emit('loginResult', {
+    callback({
       rooms: [
         {
           id: 'xe4gU37h',
@@ -47,6 +47,22 @@ io.on('connection', function (socket) {
         }
       ]
     });
+  })
+
+  socket.on('sendMessage', function (data) {
+    console.log('sendMessage', data);
+
+    data = {
+      room: data.room,
+      message: {
+        userid: '32dfUg5d',
+        username: 'Josh',
+        message: data.message,
+        timestamp: 1514775902
+      }
+    }
+
+    io.emit('receiveMessage', data)
   })
 
 })

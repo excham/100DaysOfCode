@@ -24,20 +24,46 @@ class App extends React.Component {
     }
   }
 
+  getRoomIndex(id) {
+    for (var i = 0; i < this.state.rooms.length; i++) {
+      if(this.state.rooms[i].id == id)
+        return i;
+    }
+    return null;
+  }
+
   login(host, username, password) {
 
-    this.socket = io(host);
+    this.socket = io(host || 'http://localhost:3000');
 
     this.socket.on('connect', function (data) {
 
-      this.socket.emit('login', {username: username, password: password})
+      this.socket.emit('login', {username: username, password: password}, function (data) {
 
-      this.socket.on('loginResult', function (data) {
         this.setState({rooms: data.rooms, loggedin: true})
 
         window.location.hash = "#/room/" + data.rooms[0].id
+
+        this.socket.on('receiveMessage', this.receiveMessage.bind(this))
       }.bind(this))
-    }.bind(this))
+    }.bind(this));
+  }
+
+  receiveMessage(data) {
+    console.log('receive', data);
+
+    var rooms = this.state.rooms;
+    rooms[this.getRoomIndex(data.room)].chatHistory.push(data.message)
+
+    this.setState({rooms: rooms})
+  }
+
+  sendMessgae(room, message) {
+    console.log('send', message, room);
+    this.socket.emit('sendMessage', {
+      room: room,
+      message: message
+    })
   }
 
   render() {
@@ -89,11 +115,11 @@ class App extends React.Component {
                   {path: '/room/' + e.id, key: i, render: (routeProps) => {
                     return React.createElement(
                       Room,
-                      {room: e}
+                      {room: e, sendMessage: this.sendMessgae.bind(this, e.id)}
                     )
                   }}
                 )
-              }),
+              }.bind(this)),
               React.createElement(
                 ReactRouter.Route,
                 {path: '/app/:action', component: AppManager}
