@@ -1,0 +1,41 @@
+{
+  "rooms": [
+    {
+      "id": "xe4gU37h",
+      "name": "Apples",
+      "unreadMessageCount": 2,
+      "chatHistory": [
+        {
+          "userid": "32dfUg5d",
+          "username": "Josh",
+          "message": "Hey you guys awake?",
+          "timestamp": 1514775841
+        },
+        {
+          "userid": "lEy5c925",
+          "username": "Daniel",
+          "message": "Yeah what\"s up?",
+          "timestamp": 1514775891
+        },
+        {
+          "userid": "32dfUg5d",
+          "username": "Josh",
+          "message": "bored lol",
+          "timestamp": 1514775902
+        }
+      ]
+    },
+    {
+      "id": "l58SegYu",
+      "name": "Oranges",
+      "unreadMessageCount": 0,
+      "chatHistory": []
+    },
+    {
+      "id": "3fUe8Nts",
+      "name": "Bananas",
+      "unreadMessageCount": 0,
+      "chatHistory": []
+    }
+  ]
+}

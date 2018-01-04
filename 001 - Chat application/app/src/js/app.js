@@ -38,7 +38,7 @@ class App extends React.Component {
 
     this.socket.on('connect', function (data) {
 
-      this.socket.emit('login', {username: username, password: password}, function (data) {
+      this.socket.emit('login', {username: username || 'Josh', password: password}, function (data) {
 
         this.setState({rooms: data.rooms, loggedin: true})
 
