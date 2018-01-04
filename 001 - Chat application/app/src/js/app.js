@@ -20,6 +20,7 @@ class App extends React.Component {
 
     this.state = {
       loggedin: false,
+      loginError: false,
       rooms: []
     }
   }
@@ -38,13 +39,18 @@ class App extends React.Component {
 
     this.socket.on('connect', function (data) {
 
-      this.socket.emit('login', {username: username || 'Josh', password: password}, function (data) {
+      this.socket.emit('login', {username: username || 'Josh', password: password || 'Josh'}, function (data) {
 
-        this.setState({rooms: data.rooms, loggedin: true})
+        if(data.status == "success"){
+          this.setState({rooms: data.rooms, loggedin: true})
 
-        window.location.hash = "#/room/" + data.rooms[0].id
+          window.location.hash = "#/room/" + data.rooms[0].id
 
-        this.socket.on('receiveMessage', this.receiveMessage.bind(this))
+          this.socket.on('receiveMessage', this.receiveMessage.bind(this))
+          this.socket.on('isTyping', this.isTyping.bind(this))
+        }else{
+          this.setState({loginError: true})
+        }
       }.bind(this))
     }.bind(this));
   }
@@ -66,6 +72,31 @@ class App extends React.Component {
     })
   }
 
+  setTyping(room, isTyping) {
+    this.socket.emit('setTyping', {
+      room: room,
+      isTyping: isTyping
+    })
+  }
+
+  // For the record I hate this code
+  isTyping(data) {
+    var rooms = this.state.rooms;
+
+    if(data.isTyping){
+      if (!rooms[this.getRoomIndex(data.room)].typing.includes(data.username)) {
+        rooms[this.getRoomIndex(data.room)].typing.push(data.username)
+      }
+    }else{
+      rooms[this.getRoomIndex(data.room)].typing.splice(
+        rooms[this.getRoomIndex(data.room)].typing.indexOf(data.username),
+        1
+      )
+    }
+
+    this.setState({rooms: rooms})
+  }
+
   render() {
     return (
       !this.state.loggedin ?
@@ -81,7 +112,7 @@ class App extends React.Component {
           ),
           React.createElement(
             Login,
-            {login: this.login.bind(this)}
+            {login: this.login.bind(this), erred: this.state.loginError}
           )
         )
       ) :
@@ -115,7 +146,8 @@ class App extends React.Component {
                   {path: '/room/' + e.id, key: i, render: (routeProps) => {
                     return React.createElement(
                       Room,
-                      {room: e, sendMessage: this.sendMessgae.bind(this, e.id)}
+                      {room: e, sendMessage: this.sendMessgae.bind(this, e.id),
+                        setTyping: this.setTyping.bind(this, e.id)}
                     )
                   }}
                 )

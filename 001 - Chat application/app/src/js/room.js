@@ -7,17 +7,26 @@ class Room extends React.Component {
   }
 
   checkChatSend(e) {
-    if(e.which == 13)
+    if(e.which == 13){
       this.sendMessage()
+      this.props.setTyping(false)
+    }else{
+      this.props.setTyping(
+        document.getElementById('chat__message_compose').value !== ""
+      )
+    }
   }
 
   sendMessage() {
     this.props.sendMessage(
       document.getElementById('chat__message_compose').value
     )
+
+    document.getElementById('chat__message_compose').value = ""
   }
 
   render() {
+    console.log(this.props.room.typing);
     return React.createElement(
       'div',
       {className: 'app-room'},
@@ -33,10 +42,10 @@ class Room extends React.Component {
           return React.createElement(
             'div',
             {className: 'chat-message', key: i},
-            React.createElement(
-              'img',
-              {src: 'src/images/avatar_1.png', className: 'chat-avatar'}
-            ),
+            // React.createElement(
+            //   'img',
+            //   {src: 'src/images/avatar_1.png', className: 'chat-avatar'}
+            // ),
             React.createElement(
               'b',
               {className: 'chat-username'},
@@ -47,15 +56,23 @@ class Room extends React.Component {
           );
         })
       ),
-      React.createElement(
+      this.props.room.typing.length > 0 ? React.createElement(
         'small',
         {className: 'chat-typing'},
-        React.createElement(
-          'i',
-          {},
-          'Daniel'
-        ),
-        ' is typing...'
+        this.props.room.typing.map(function (e, i) {
+          return React.createElement(
+            'i',
+            {key: i},
+            e,
+            ' '
+          );
+        }),
+        (this.props.room.typing.length == 1 ? 'is' : 'are'),
+        ' typing...'
+      ) : React.createElement(
+        'small',
+        {className: 'chat-typing'},
+        ' '
       ),
       React.createElement(
         'div',
@@ -65,7 +82,7 @@ class Room extends React.Component {
           {className: 'column is-10'},
           React.createElement(
             'input',
-            {className: 'input chat-compose', id: 'chat__message_compose', onKeyPress: this.checkChatSend.bind(this)}
+            {className: 'input chat-compose', id: 'chat__message_compose', onKeyUp: this.checkChatSend.bind(this)}
           )
         ),
         React.createElement(

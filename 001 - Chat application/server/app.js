@@ -7,8 +7,6 @@ class App {
 
     this.io = require('socket.io')(this.server)
 
-    this.users = []
-
     this.io.on('connection', require('./events')(this))
 
     this.server.listen(3000, function () {

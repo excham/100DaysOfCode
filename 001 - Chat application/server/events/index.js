@@ -5,5 +5,8 @@ module.exports = function (app) {
     socket.on('login', require('./login')(app, socket))
 
     socket.on('sendMessage', require('./sendMessage')(app, socket))
+
+    socket.on('setTyping', require('./setTyping')(app, socket))
+    
   };
 }

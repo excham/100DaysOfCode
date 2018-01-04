@@ -23,19 +23,22 @@
           "message": "bored lol",
           "timestamp": 1514775902
         }
-      ]
+      ],
+      "typing": []
     },
     {
       "id": "l58SegYu",
       "name": "Oranges",
       "unreadMessageCount": 0,
-      "chatHistory": []
+      "chatHistory": [],
+      "typing": []
     },
     {
       "id": "3fUe8Nts",
       "name": "Bananas",
       "unreadMessageCount": 0,
-      "chatHistory": []
+      "chatHistory": [],
+      "typing": []
     }
   ]
 }

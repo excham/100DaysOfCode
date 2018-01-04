@@ -146,3 +146,7 @@ input, textarea {
 .app-login {
   padding-top: 130px;
 }
+
+.app-login.has-erred {
+  padding-top: 60px;
+}

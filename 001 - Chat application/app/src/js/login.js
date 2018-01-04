@@ -11,16 +11,27 @@ class Login extends React.Component {
   }
 
   render() {
+    var loginErrorClass = this.props.erred == true ? " has-erred" : "";
+    var loginErrorDisplay = this.props.erred == true ? "block" : "none";
     return React.createElement(
       'div',
       {className: 'columns is-centered'},
       React.createElement(
         'div',
-        {className: 'column is-4 app-login'},
+        {className: 'column is-4 app-login' + loginErrorClass},
         React.createElement(
           'h2',
           {className: 'title is-3'},
           'Login'
+        ),
+        React.createElement(
+          'div',
+          {className: 'message is-danger', style: {display: loginErrorDisplay}},
+          React.createElement(
+            'div',
+            {className: 'message-body has-text-centered'},
+            'Incorrect username/password'
+          )
         ),
         React.createElement(
           'div',

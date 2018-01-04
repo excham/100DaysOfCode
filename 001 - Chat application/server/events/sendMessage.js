@@ -1,10 +1,9 @@
 module.exports = function (app, socket) {
+  // data: {room: XXX, message: XXX}
   return function (data) {
     console.log('sendMessage', data)
 
     if(data.message == "") return;
-
-    console.log(socket.id);
 
     data = {
       room: data.room,

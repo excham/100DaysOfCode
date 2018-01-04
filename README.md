@@ -14,4 +14,5 @@
   - **Day 4**:
     - Continued to work on Chat Application
       - Started chat backend - messages can now be sent to rooms and will show in the client
-      - Added basic `socket.id` based login system. Seperated each socket event 
+      - Added basic `socket.id` based login system. Separated each socket event
+      - Added typing indicator and worked on login system
