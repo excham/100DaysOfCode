@@ -41,6 +41,8 @@ class App extends React.Component {
 
       this.socket.emit('login', {username: username || 'Josh', password: password || 'Josh'}, function (data) {
 
+        console.log(data);
+
         if(data.status == "success"){
           this.setState({rooms: data.rooms, loggedin: true})
 

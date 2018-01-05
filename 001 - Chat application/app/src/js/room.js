@@ -6,6 +6,11 @@ class Room extends React.Component {
     super()
   }
 
+  componentWillMount() {
+    if(this.props.room.typing == undefined)
+      this.props.room.typing = []
+  }
+
   checkChatSend(e) {
     if(e.which == 13){
       this.sendMessage()

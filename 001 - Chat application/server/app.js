@@ -2,6 +2,7 @@
 class App {
   constructor() {
     this.server = require('http').createServer()
+    this.monk = require('monk')('localhost/chat')
 
     this.store = require('store')
 

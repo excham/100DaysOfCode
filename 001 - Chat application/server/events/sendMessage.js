@@ -15,6 +15,11 @@ module.exports = function (app, socket) {
       }
     }
 
+    messageRecord = data.message;
+    messageRecord.room = data.room;
+
+    app.monk.get('chatHistory').insert(messageRecord)
+
     app.io.emit('receiveMessage', data)
   }
 }
