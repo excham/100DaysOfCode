@@ -16,7 +16,10 @@
       - Started chat backend - messages can now be sent to rooms and will show in the client
       - Added basic `socket.id` based login system. Separated each socket event
       - Added typing indicator and worked on login system
-
-  - **Day 4**:
+  - **Day 5**:
     - Continued to work on Chat Application
       - Added database support for message history and rooms
+  - *(two day break)*
+  - **Day 6**:
+    - Continued to work on Chat Application
+      - Added unread chat notifications

@@ -23,6 +23,22 @@ class App extends React.Component {
       loginError: false,
       rooms: []
     }
+
+    window.addEventListener('hashchange', this.onNavigate.bind(this))
+  }
+
+  onNavigate() {
+    var hash = window.location.hash
+    console.log('navigate', hash);
+    if(hash.indexOf('#/room/') >= 0){
+      var roomId = hash.substring(7, hash.length);
+
+      var rooms = this.state.rooms;
+
+      rooms[this.getRoomIndex(roomId)].unreadMessageCount = 0
+
+      this.setState({rooms: rooms, currentRoom: roomId})
+    }
   }
 
   getRoomIndex(id) {
@@ -62,6 +78,10 @@ class App extends React.Component {
 
     var rooms = this.state.rooms;
     rooms[this.getRoomIndex(data.room)].chatHistory.push(data.message)
+
+    if(this.state.currentRoom != data.room){
+      rooms[this.getRoomIndex(data.room)].unreadMessageCount++;
+    }
 
     this.setState({rooms: rooms})
   }

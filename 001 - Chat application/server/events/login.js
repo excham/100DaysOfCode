@@ -18,6 +18,7 @@ module.exports = function (app, socket) {
               callback(null, {
                 id: room.id,
                 name: room.name,
+                unreadMessageCount: 0,
                 chatHistory: docs
               })
             })
