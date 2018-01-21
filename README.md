@@ -19,7 +19,9 @@
   - **Day 5**:
     - Continued to work on Chat Application
       - Added database support for message history and rooms
-  - *(two day break)*
   - **Day 6**:
     - Continued to work on Chat Application
       - Added unread chat notifications
+  - **Day 7**:
+    - Started Forums
+      - worked on front end

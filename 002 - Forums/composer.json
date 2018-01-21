@@ -1,0 +1,13 @@
+{
+    "name": "excham/cms",
+    "authors": [
+        {
+            "name": "Isaac",
+            "email": "isaac@excham.net"
+        }
+    ],
+    "require": {
+        "slim/slim": "^3.9",
+        "slim/php-view": "^2.2"
+    }
+}
