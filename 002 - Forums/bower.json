@@ -1,0 +1,22 @@
+{
+  "name": "forums",
+  "homepage": "https://github.com/excham/100DaysOfCode",
+  "authors": [
+    "Isaac <isaac@excham.net>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bulma": "^0.6.2",
+    "font-awesome": "^4.7.0"
+  }
+}
