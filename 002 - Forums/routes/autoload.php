@@ -2,7 +2,8 @@
 
 $routes = array(
   'index.php',
-  'forums.php'
+  'forums.php',
+  'user.php'
 );
 
 $dirname = dirname(__DIR__);

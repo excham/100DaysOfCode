@@ -10,13 +10,30 @@
           <h3 class="title is-3">This is my topic!</h3>
         </div>
       </div>
-      <?php for ($i=0; $i < 15; $i++) { ?>
-        <?=($i == 1 ? "<br />" : "")?>
+      <?php for ($i=0; $i < 15; $i++) {
+        if ($i == 1) {
+          ?>
+          <span style="display: inline-block; padding: 15px 0px;">498 replies</span>
+          <nav class="pagination is-small is-pulled-right" style="margin-top: 10px;" role="navigation" aria-label="pagination">
+            Page&nbsp;&nbsp;
+            <ul class="pagination-list">
+              <li><a class="button pagination-link" aria-label="Goto page 1">1</a></li>
+              <li><span class="pagination-ellipsis">&hellip;</span></li>
+              <li><a class="button pagination-link" aria-label="Goto page 45">45</a></li>
+              <li><a class="button pagination-link is-current" aria-label="Page 46" aria-current="page">46</a></li>
+              <li><a class="button pagination-link" aria-label="Goto page 47">47</a></li>
+              <li><span class="pagination-ellipsis">&hellip;</span></li>
+              <li><a class="button pagination-link" aria-label="Goto page 86">86</a></li>
+            </ul>
+          </nav>
+          <?php
+        }
+        ?>
         <div class="card">
           <div class="card-content">
             <div class="columns">
               <div class="column is-1 has-text-centered">
-                <a href="#">
+                <a href="/u/excham">
                   <img src="https://crafatar.com/avatars/excham?size=80" alt="">
                   <span>excham</span>
                 </a>
@@ -41,6 +58,20 @@
           </div>
         </div>
       <?php } ?>
+      <br>
+      <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+        <a class="pagination-previous">Previous</a>
+        <a class="pagination-next">Next page</a>
+        <ul class="pagination-list">
+          <li><a class="pagination-link" aria-label="Goto page 1">1</a></li>
+          <li><span class="pagination-ellipsis">&hellip;</span></li>
+          <li><a class="pagination-link" aria-label="Goto page 45">45</a></li>
+          <li><a class="pagination-link is-current" aria-label="Page 46" aria-current="page">46</a></li>
+          <li><a class="pagination-link" aria-label="Goto page 47">47</a></li>
+          <li><span class="pagination-ellipsis">&hellip;</span></li>
+          <li><a class="pagination-link" aria-label="Goto page 86">86</a></li>
+        </ul>
+      </nav>
     </div>
     <?php include dirname(__DIR__) . '/template/footer.php' ?>
   </body>
