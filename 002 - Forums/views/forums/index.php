@@ -68,25 +68,35 @@
                 </div>
               </div>
               <?php for ($i=0; $i < 10; $i++) { ?>
-              <a href="#">
-                <div class="columns" style="height: 48px; margin-bottom: 20px;">
-                  <div class="column is-4">
-                    This is my post!
-                  </div>
-                  <div class="column is-3">
+              <div class="columns" style="height: 48px; margin-bottom: 20px;">
+                <a href="/t/hello" class="column is-4">
+                  This is my post!
+                </a>
+                <div class="column is-3" style="padding-top: 0px;">
+                  <a href="/u/excham" class="display-block">
+                    <img src="https://crafatar.com/avatars/excham?size=45" alt="exchams avatar" class="is-pulled-left" style="margin-right: 10px;">
                     excham
-                  </div>
-                  <div class="column is-3">
-                    excham
-                  </div>
-                  <div class="column is-1">
-                    3
-                  </div>
-                  <div class="column is-1">
-                    19
-                  </div>
+                  </a>
+                  <a href="/t/hello" class="display-block">
+                    <small style="display: block; margin-top: -3px; font-size: 12px;">3 days ago</small>
+                  </a>
                 </div>
-              </a>
+                <div class="column is-3" style="padding-top: 0px;">
+                  <a href="/u/excham" class="display-block">
+                    <img src="https://crafatar.com/avatars/excham?size=45" alt="exchams avatar" class="is-pulled-left" style="margin-right: 10px;">
+                    excham
+                  </a>
+                  <a href="/t/hello" class="display-block">
+                    <small style="display: block; margin-top: -3px; font-size: 12px;">12 minutes ago</small>
+                  </a>
+                </div>
+                <div class="column is-1">
+                  3
+                </div>
+                <div class="column is-1">
+                  19
+                </div>
+              </div>
               <?php } ?>
               <nav class="pagination is-centered is-small" role="navigation" aria-label="pagination">
                 <a class="pagination-previous">Previous</a>

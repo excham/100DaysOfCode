@@ -25,3 +25,6 @@
   - **Day 7**:
     - Started Forums
       - worked on front end
+  - **Day 8 - 9**:
+    - Continued to work on Forums
+      - Continued on front end

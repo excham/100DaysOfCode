@@ -6,4 +6,10 @@ $app->get('/forums', function ($request, $response, $args) {
   ]);
 });
 
+$app->get('/t/{id}', function ($request, $response, $args) {
+  return $this->view->render($response, 'forums/topic.php', [
+      'site' => $request->getAttribute('config')
+  ]);
+});
+
 ?>
