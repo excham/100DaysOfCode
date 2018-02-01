@@ -1,0 +1,3 @@
+[submodule "002 - Forums"]
+	path = 002 - Forums
+	url = https://github.com/excham/phpforums.git
